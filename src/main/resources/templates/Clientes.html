@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="Layout_Default">
+<head>
+	<title>Clientes</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+<div layout:include="MensagemGeral"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title floated-left">Pesquisa de Titulos</h1>
+				<a class="btn btn-link floated-right" th:href="@{/clientes/novo}">Novo titulo</a>
+			</div>
+		</div>
+	
+		<div class="panel-body">
+			<form method="GET" class="form-horizontal" th:object="${filtro}">
+				<div class="form-group">
+					<div class="col-sm-4">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Qual titulo você esta procurando?" id="nome" th:field="*{razao_social}"
+							autofocus="autofocus" />
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center col-md-1">#</th>
+							<th>Razão Social</th>
+							<th class="text-center col-md-2">CNPJ</th>
+							<th class="text-center col-md-2">Site</th>
+							<th class="text-center col-md-2">Email</th>
+							<th class="text-center col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cliente : ${clientes}">
+							<td class="text-center" th:text="${cliente.codigo}"></td>
+							<td th:text="${cliente.nome}"></td>
+							<td class="text-center" th:text="${cliente.cnpj}"></td>
+							<td class="text-center" th:text="${cliente.site}"></td>
+							<td class="text-center" th:text="${cliente.email}"></td>
+							<td class="text-center">
+								<a class="btn btn-link btn-xs" th:href="@{/clientes/{codigo}(codigo = ${cliente.codigo})}" title="Editar" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${cliente.codigo}, data-nome=${cliente.nome}" title="Excluir" rel="tooltip" data-placement="top">
+									<span class="glyphicon glyphicon-remove"></span>
+								</a>
+							</td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(clientes)}">
+							<td colspan="6">Nenhum cliente foi encontrado!</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div layout:include="Confirm_Dialog"></div>
+	</div>
+
+</section>
+
+</html>
