@@ -1,0 +1,20 @@
+{
+  "name": "resources",
+  "homepage": "https://github.com/GestaoVenda/GestaoVendas",
+  "authors": [
+    "Luan Sommerhauzer <luan.smr@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.4"
+  }
+}
