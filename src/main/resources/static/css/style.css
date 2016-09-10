@@ -864,21 +864,14 @@ textarea {
 /* GREAT DESKTOP -SIZE */
 /* LAYOUT */
 /* MODULE */
-.cabeca {
-  color: red;
-  background: white; }
+.form__input {
+  display: block; }
 
-.cabeca__olho {
-  width: 100px; }
+.form__radio {
+  display: inline; }
 
-.corpo {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  border-radius: 50%;
-  -webkit-box-shadow: 0 0 10px #000;
-  box-shadow: 0 0 10px #000; }
+fieldset {
+  margin: 10px 0; }
 
 /* STATE */
 
